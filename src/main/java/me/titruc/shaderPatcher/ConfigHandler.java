@@ -2,7 +2,7 @@ package me.titruc.shaderPatcher;
 
 import java.util.List;
 
-import static me.titruc.shaderPatcher.ShaderTweaker.config;
+import static me.titruc.shaderPatcher.ShaderPatcher.config;
 
 public class ConfigHandler
 {

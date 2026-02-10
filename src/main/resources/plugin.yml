@@ -1,4 +1,24 @@
 name: shaderTweaker
 version: '1.0-SNAPSHOT'
-main: me.titruc.shaderTweaker.ShaderTweaker
+main: me.titruc.shaderPatcher.ShaderPatcher
 api-version: '1.21'
+
+permissions:
+  shaderpatcher.option.use:
+    description: use the changeshaderoption command
+    default: true
+
+  shaderpatcher.option.admin:
+    description: use shader patcher as an admin
+    default: op
+
+commands:
+  changeshaderoption:
+    description: Change shader options
+    usage: /changeshaderoption <option>
+    permission: shaderpatcher.option.use
+
+  shaderpatcher:
+    description: Change shader options
+    usage: /changeshaderoption <subcommand>
+    permission: shaderpatcher.option.admin
