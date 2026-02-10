@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class ShaderPatcher extends JavaPlugin {
 
     public static FileConfiguration config;
+    public static JavaPlugin singleton;
 
     @Override
     public void onEnable() {
@@ -19,6 +20,9 @@ public final class ShaderPatcher extends JavaPlugin {
     {
         //do normal reload stuff
         super.reloadConfig();
+
+        //singleton
+        singleton = this;
 
         //update config singleton
         config = getConfig();

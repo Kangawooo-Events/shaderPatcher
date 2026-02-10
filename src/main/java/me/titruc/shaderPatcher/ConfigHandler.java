@@ -6,10 +6,12 @@ import static me.titruc.shaderPatcher.ShaderPatcher.config;
 
 public class ConfigHandler
 {
+    public static String shaderOptionPersistentDataName;
     public static List<String> shaderOption;
 
     public static void refresh()
     {
+        shaderOptionPersistentDataName = config.getString("SHADER_OPTION_PERSISTENT_DATA_NAME");
         shaderOption = config.getStringList("SHADER_OPTION");
     }
 

@@ -8,17 +8,9 @@ permissions:
     description: use the changeshaderoption command
     default: true
 
-  shaderpatcher.option.admin:
-    description: use shader patcher as an admin
-    default: op
-
 commands:
   changeshaderoption:
     description: Change shader options
     usage: /changeshaderoption <option>
     permission: shaderpatcher.option.use
 
-  shaderpatcher:
-    description: Change shader options
-    usage: /changeshaderoption <subcommand>
-    permission: shaderpatcher.option.admin
