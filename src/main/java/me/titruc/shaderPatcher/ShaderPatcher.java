@@ -1,7 +1,7 @@
 package me.titruc.shaderPatcher;
 
-import me.titruc.shaderPatcher.commands.CommandManager;
-import me.titruc.shaderPatcher.commands.playerCommands.ChangeShaderOption;
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import me.titruc.shaderPatcher.commands.playerCommands.changeShaderOption.ChangeShaderOptionArgumentBuilder;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,7 +12,22 @@ public final class ShaderPatcher extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // save default config
         saveDefaultConfig();
+
+        // singleton
+        singleton = this;
+
+        // update config singleton
+        config = getConfig();
+
+        // reload ConfigHandler
+        ConfigHandler.refresh();
+
+        // setup Brigadier commands
+        getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
+            commands.registrar().register(ChangeShaderOptionArgumentBuilder.getCommandNode());
+        });
     }
 
     @Override
@@ -20,20 +35,9 @@ public final class ShaderPatcher extends JavaPlugin {
     {
         //do normal reload stuff
         super.reloadConfig();
-
-        //singleton
-        singleton = this;
-
-        //update config singleton
+        // update config singleton
         config = getConfig();
-
         //reload the config api
         ConfigHandler.refresh();
-
-        //add utility command
-        getCommand("shaderpatcher").setExecutor(new CommandManager());
-
-        //add player command
-        getCommand("changeshaderoption").setExecutor(new ChangeShaderOption());
     }
 }

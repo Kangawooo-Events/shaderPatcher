@@ -8,9 +8,6 @@ permissions:
     description: use the changeshaderoption command
     default: true
 
-commands:
-  changeshaderoption:
-    description: Change shader options
-    usage: /changeshaderoption <option>
-    permission: shaderpatcher.option.use
-
+  commands:
+    testcmd:
+      description: Test command

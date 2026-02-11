@@ -7,6 +7,4 @@ public class ShaderOption {
         HYBRID,
         ENABLE
     }
-
-    
 }

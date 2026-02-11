@@ -15,4 +15,9 @@ public class PlayerManager
         NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.shaderOptionPersistentDataName);
         player.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, option);
     }
+
+    static public void setDefaultShaderOption(Player player)
+    {
+        changePlayerShaderOption(player, ConfigHandler.shaderOptionDefaultId);
+    }
 }

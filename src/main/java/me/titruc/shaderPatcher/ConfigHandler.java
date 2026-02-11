@@ -7,11 +7,13 @@ import static me.titruc.shaderPatcher.ShaderPatcher.config;
 public class ConfigHandler
 {
     public static String shaderOptionPersistentDataName;
+    public static int shaderOptionDefaultId;
     public static List<String> shaderOption;
 
     public static void refresh()
     {
         shaderOptionPersistentDataName = config.getString("SHADER_OPTION_PERSISTENT_DATA_NAME");
+        shaderOptionDefaultId = config.getInt("SHADER_OPTION_DEFAULT_ID");
         shaderOption = config.getStringList("SHADER_OPTION");
     }
 

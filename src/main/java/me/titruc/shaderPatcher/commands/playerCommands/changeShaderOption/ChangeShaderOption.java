@@ -1,4 +1,4 @@
-package me.titruc.shaderPatcher.commands.playerCommands;
+package me.titruc.shaderPatcher.commands.playerCommands.changeShaderOption;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
