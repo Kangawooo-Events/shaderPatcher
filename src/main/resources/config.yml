@@ -1,6 +1,11 @@
+SHADER_OPTION_COMMAND_NAME : "serverShader"
+SHADER_OPTION_COMMAND_ERROR_ALREADY : "Nothing has changed; you already have this parameter selected"
+
 SHADER_OPTION:
-  - DISABLE
-  - ENABLE
+  - disable
+  - hybrid
+  - enable
+
 SHADER_OPTION_PERSISTENT_DATA_NAME : "ShaderOption"
 
 SHADER_OPTION_DEFAULT_ID : 2
