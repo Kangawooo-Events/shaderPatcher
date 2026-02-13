@@ -1,5 +1,5 @@
-SHADER_OPTION_COMMAND_NAME : "serverShader"
-SHADER_PATCHER_COMMAND_NAME : "serverPatcher"
+SHADER_OPTION_COMMAND_NAME : "setVisuals"
+SHADER_PATCHER_COMMAND_NAME : "shaderPatcher"
 SHADER_OPTION_COMMAND_ERROR_ALREADY : "Nothing has changed; you already have this parameter selected"
 SHADER_PATCHER_COMMAND_ERROR_PLAYER_NOWHERE_TO_BE_FOUND : "The player cannot be found"
 SHADER_PATCHER_ERROR_VERSION : "Your visual settings were reset to default values due to a change in the server configuration. If you want to change this option again, do /"
@@ -14,3 +14,8 @@ PLAYER_SETUP_PERSISTENT_DATA_NAME : "isSetup"
 PLAYER_VERSION_PERSISTENT_DATA_NAME : "optionVersion"
 
 SHADER_OPTION_DEFAULT_ID : 2
+
+WARNING_TEXT : "/!\\ Unsupported shader /!\\\n  do /%s to change visual settings /n check #info for more info"
+WARNING_INVISIBLE_COLOR : "#CD0C33"
+WARNING_DISPLAY_TIME : 5
+WARNING_DISPLAY_RANGE : 0.005

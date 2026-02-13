@@ -1,5 +1,6 @@
 package me.titruc.shaderPatcher.playerManager;
 
+import me.titruc.shaderPatcher.message.TextDisplayManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.NamespacedKey;
@@ -14,6 +15,11 @@ public class PlayerManager
 {
     static public void setPlayerShaderOption(Player player, int option)
     {
+        if(PlayerManager.getPlayerShaderOption(player) == ConfigHandler.shaderOptionDefaultId)
+        {
+            TextDisplayManager.removeFromPlayer(player.getUniqueId().toString());
+        }
+
         NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.shaderOptionPersistentDataName);
         player.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, option);
     }
