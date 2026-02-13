@@ -17,4 +17,16 @@ public class ShaderOption {
         }
     }
 
+    public String getVersion()
+    {
+        StringBuilder version = new StringBuilder();
+
+        for(int i = 0; i < option.toArray().length; i++)
+        {
+            version.append(option.get(i).optionName);
+        }
+
+        return  version.toString();
+    }
+
 }

@@ -30,7 +30,7 @@ public class ChangeShaderOptionArgumentBuilder
         {
             int index = i;
 
-            testcmd.then(Commands.literal(ShaderPatcher.shaderOption.option.get(i).optionName)
+            testcmd.then(Commands.literal(ShaderPatcher.shaderOption.option.get(i).optionName).requires(source -> source.getSender().hasPermission("shaderpatcher.option"))
                     .executes(ctx -> {
                         var sender = ctx.getSource().getSender();
                         if(sender instanceof Player player)

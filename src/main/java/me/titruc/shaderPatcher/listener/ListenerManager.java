@@ -1,6 +1,6 @@
 package me.titruc.shaderPatcher.listener;
 
-import me.titruc.shaderPatcher.ConfigHandler;
+import me.titruc.shaderPatcher.message.TextDisplayManager;
 import me.titruc.shaderPatcher.playerManager.PlayerManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,12 +11,11 @@ public class ListenerManager implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+
         //get player
         Player player = event.getPlayer();
+        TextDisplayManager.putTextDisplayAsPassenger(player);
+        PlayerManager.handlePlayerChange(player);
 
-        //set default shader setting when first join
-        if (!player.hasPlayedBefore()) {
-            PlayerManager.setDefaultShaderOption(player);
-        }
     }
 }
