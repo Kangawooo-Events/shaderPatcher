@@ -1,7 +1,6 @@
 package me.titruc.shaderPatcher.message;
 
-import me.titruc.shaderPatcher.ConfigHandler;
-import me.titruc.shaderPatcher.ShaderPatcher;
+//libs
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
@@ -13,22 +12,29 @@ import org.bukkit.persistence.PersistentDataType;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.bukkit.util.Transformation;
-
 import java.util.HashMap;
 import java.util.Map;
 
+//plugin files
+import me.titruc.shaderPatcher.ConfigHandler;
+import me.titruc.shaderPatcher.ShaderPatcher;
+
 public class TextDisplayManager {
 
+    //all existing warning text display, store like that ; owner_uuid : text_display
     private static final Map<String, TextDisplay> displays = new HashMap<>();
 
+    //namespace for persistent data
     static final private NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, "shaderWarning");
     static final private NamespacedKey ownerKey = new NamespacedKey(ShaderPatcher.singleton, "shaderWarningPlayerUUID");
 
+    //summon the text display on a player
     public static void putTextDisplayAsPassenger(Player player) {
+        //get world
         var world = player.getWorld();
-
+        //get location of the player eyes
         Location eyeLoc = player.getEyeLocation();
-
+        //summon a text display
         TextDisplay textDisplay = (TextDisplay) world.spawnEntity(eyeLoc, EntityType.TEXT_DISPLAY);
 
         textDisplay.setShadowStrength(0);

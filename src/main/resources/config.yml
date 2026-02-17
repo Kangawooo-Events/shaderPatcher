@@ -1,21 +1,37 @@
-SHADER_OPTION_COMMAND_NAME : "setVisuals"
-SHADER_PATCHER_COMMAND_NAME : "shaderPatcher"
-SHADER_OPTION_COMMAND_ERROR_ALREADY : "Nothing has changed; you already have this parameter selected"
-SHADER_PATCHER_COMMAND_ERROR_PLAYER_NOWHERE_TO_BE_FOUND : "The player cannot be found"
-SHADER_PATCHER_ERROR_VERSION : "Your visual settings were reset to default values due to a change in the server configuration. If you want to change this option again, do /"
-
+#shader option
+  #shader available option
 SHADER_OPTION:
   - disable
   - hybrid
   - enable
+  #default shader index
+SHADER_OPTION_DEFAULT_ID : 2
 
+#shader patcher commands name
+  #player command to change shader option
+SHADER_OPTION_COMMAND_NAME : "setVisuals"
+  #admin command to do all kind of stuff
+SHADER_PATCHER_COMMAND_NAME : "shaderPatcher"
+
+#error messages
+  #error when player try to set shader option to their current shader option
+SHADER_OPTION_COMMAND_ERROR_ALREADY : "Nothing has changed; you already have this parameter selected"
+  #error when the player isn't connected when using shaderPatcher's commands
+SHADER_PATCHER_COMMAND_ERROR_PLAYER_NOWHERE_TO_BE_FOUND : "The player cannot be found"
+  #error when player log on with a plugin version not up to date
+SHADER_PATCHER_ERROR_VERSION : "Your visual settings were reset to default values due to a change in the server configuration. If you want to change this option again, do /"
+
+#persistent data name
 SHADER_OPTION_PERSISTENT_DATA_NAME : "ShaderOption"
 PLAYER_SETUP_PERSISTENT_DATA_NAME : "isSetup"
 PLAYER_VERSION_PERSISTENT_DATA_NAME : "optionVersion"
 
-SHADER_OPTION_DEFAULT_ID : 2
-
+#warning text
+  #actual text
 WARNING_TEXT : "/!\\ Unsupported shader /!\\\n  do /%s to change visual settings /n check #info for more info"
+  #color (need to be the same one in the shadervanilla to make the text disapper if the shader is compatible
 WARNING_INVISIBLE_COLOR : "#CD0C33"
+  #display time in seconds
 WARNING_DISPLAY_TIME : 5
+  #view range
 WARNING_DISPLAY_RANGE : 0.005

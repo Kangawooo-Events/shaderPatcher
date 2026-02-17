@@ -1,23 +1,32 @@
 package me.titruc.shaderPatcher;
 
+//import lib
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
+//import plugin's files
 import me.titruc.shaderPatcher.commands.adminCommand.ShaderPatcherOptionArgumentBuilder;
 import me.titruc.shaderPatcher.commands.playerCommands.changeShaderOption.ChangeShaderOptionArgumentBuilder;
 import me.titruc.shaderPatcher.listener.ListenerManager;
 import me.titruc.shaderPatcher.shaderOption.ShaderOption;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShaderPatcher extends JavaPlugin {
 
+    //config
     public static FileConfiguration config;
+    //configHandler (ty cadden)
     public static ConfigHandler configHandler;
+    //easy reference to plugin
     public static JavaPlugin singleton;
+    //shader option to choose from
     public static ShaderOption shaderOption;
+    //version of the plugin (change if shader options change)
     public static String shaderPatcherVersion;
 
     @Override
     public void onEnable() {
+
         // save default config
         saveDefaultConfig();
 
