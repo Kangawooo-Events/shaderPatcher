@@ -1,16 +1,15 @@
 package me.titruc.shaderPatcher.commands.adminCommand.branch;
 
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.arguments.StringArgumentType;
+//libs
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.titruc.shaderPatcher.ConfigHandler;
+
+//plugin's files
 import me.titruc.shaderPatcher.ShaderPatcher;
 import me.titruc.shaderPatcher.commands.adminCommand.CommandBranch;
-import me.titruc.shaderPatcher.playerManager.PlayerManager;
 
+//refresh config
 public class ShaderPatcherBranchRefresh extends CommandBranch {
 
     @Override
@@ -24,7 +23,7 @@ public class ShaderPatcherBranchRefresh extends CommandBranch {
                                 "refreshing shader patcher config..."
                         );
 
-                        ConfigHandler.refresh();
+                        ShaderPatcher.singleton.reloadConfig();
 
                         return 1;
                     })

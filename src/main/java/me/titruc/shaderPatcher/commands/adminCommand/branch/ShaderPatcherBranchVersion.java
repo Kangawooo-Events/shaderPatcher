@@ -1,25 +1,19 @@
 package me.titruc.shaderPatcher.commands.adminCommand.branch;
 
-import com.mojang.brigadier.Message;
+//libs
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import me.titruc.shaderPatcher.ConfigHandler;
+
+//plugin's player
 import me.titruc.shaderPatcher.ShaderPatcher;
+import me.titruc.shaderPatcher.commands.Error;
 import me.titruc.shaderPatcher.commands.adminCommand.CommandBranch;
 import me.titruc.shaderPatcher.playerManager.PlayerManager;
 
+//create the version subcommand to get a player plugin version
 public class ShaderPatcherBranchVersion extends CommandBranch {
-
-    private static final SimpleCommandExceptionType PLAYER_NOWHERE_TO_BE_FIND =
-            new SimpleCommandExceptionType(new Message() {
-                @Override
-                public String getString() {
-                    return ConfigHandler.ShaderPatcherCommandErrorPlayerNowhereToBeFound;
-                }
-            });
 
     @Override
     public void addBranchToTree(LiteralArgumentBuilder<CommandSourceStack> cmd)
@@ -39,7 +33,7 @@ public class ShaderPatcherBranchVersion extends CommandBranch {
                                             var player = ShaderPatcher.singleton.getServer().getPlayer(playerName);
 
                                             if (player == null) {
-                                                throw PLAYER_NOWHERE_TO_BE_FIND.create();
+                                                throw Error.PLAYER_NOWHERE_TO_BE_FIND.create();
                                             }
 
                                             ctx.getSource().getSender().sendMessage(

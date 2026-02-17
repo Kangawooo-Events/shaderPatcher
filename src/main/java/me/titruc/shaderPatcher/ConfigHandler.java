@@ -21,6 +21,7 @@ public class ConfigHandler
     public static String warningInvisibleColor;
     public static int warningDisplayTime;
     public static double warningDisplayRange;
+    public static double warningSize;
 
     //error text
     public static String ShaderOptionCommandErrorAlready;
@@ -44,6 +45,7 @@ public class ConfigHandler
         warningDisplayRange = config.getDouble("WARNING_DISPLAY_RANGE");
         warningInvisibleColor = config.getString("WARNING_INVISIBLE_COLOR");
         warningDisplayTime = config.getInt("WARNING_DISPLAY_TIME");
+        warningSize = config.getInt("WARNING_SIZE");
 
             //commands name
         getShaderOptionCommandName = config.getString("SHADER_OPTION_COMMAND_NAME");

@@ -18,6 +18,11 @@ import java.util.Objects;
 //tools to get/set info on players
 public class PlayerManager
 {
+    //create all persistent data key
+    private static final NamespacedKey shaderOptionKey = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.shaderOptionPersistentDataName);
+    private static final NamespacedKey setupKey = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerSetupPersistentDataName);
+    private static final NamespacedKey keyVersion = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerVersionPersistentDataName);
+
     //set player shader option in persistent data
     static public void setPlayerShaderOption(Player player, int option)
     {
@@ -26,15 +31,13 @@ public class PlayerManager
             TextDisplayManager.removeFromPlayer(player.getUniqueId().toString());
         }
 
-        NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.shaderOptionPersistentDataName);
-        player.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, option);
+        player.getPersistentDataContainer().set(shaderOptionKey, PersistentDataType.INTEGER, option);
     }
 
     //get the current shader option of a player
     static public int getPlayerShaderOption(Player player)
     {
-        NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.shaderOptionPersistentDataName);
-        var playerData = player.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
+        var playerData = player.getPersistentDataContainer().get(shaderOptionKey, PersistentDataType.INTEGER);
 
         if(playerData != null)
         {
@@ -47,29 +50,25 @@ public class PlayerManager
     //check if the player already have a shader option
     static public boolean playerIsSetup(Player player)
     {
-        NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerSetupPersistentDataName);
-        return player.getPersistentDataContainer().has(key, PersistentDataType.BOOLEAN);
+        return player.getPersistentDataContainer().has(setupKey, PersistentDataType.BOOLEAN);
     }
 
     //set player shaderPatcher version in persistent data
     static public void setPlayerVersion(Player player)
     {
-        NamespacedKey keyVersion = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerVersionPersistentDataName);
         player.getPersistentDataContainer().set(keyVersion, PersistentDataType.STRING, ShaderPatcher.shaderPatcherVersion);
     }
 
     //get player shaderPatcher version
     static public String getPlayerVersion(Player player)
     {
-        NamespacedKey keyVersion = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerVersionPersistentDataName);
         return player.getPersistentDataContainer().get(keyVersion, PersistentDataType.STRING);
     }
 
     //setup player version/default shader option; used usually on first join (check playerIsSetup)
     static public void setupPlayer(Player player)
     {
-        NamespacedKey keySetup = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerSetupPersistentDataName);
-        player.getPersistentDataContainer().set(keySetup, PersistentDataType.BOOLEAN, true);
+        player.getPersistentDataContainer().set(setupKey, PersistentDataType.BOOLEAN, true);
         //set version
         setPlayerVersion(player);
         //set player's shader option to default
@@ -79,8 +78,7 @@ public class PlayerManager
     //check if a player have a version register
     static public boolean playerHasOptionVersion(Player player)
     {
-        NamespacedKey key = new NamespacedKey(ShaderPatcher.singleton, ConfigHandler.playerVersionPersistentDataName);
-        return player.getPersistentDataContainer().has(key, PersistentDataType.STRING);
+        return player.getPersistentDataContainer().has(keyVersion, PersistentDataType.STRING);
     }
 
     //ser player's shader option to default
