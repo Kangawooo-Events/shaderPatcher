@@ -5,6 +5,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
+import me.titruc.shaderPatcher.listener.ChangeVisualSettings;
 import org.bukkit.entity.Player;
 
 //plugin's files
@@ -12,6 +13,10 @@ import me.titruc.shaderPatcher.ConfigHandler;
 import me.titruc.shaderPatcher.ShaderPatcher;
 import me.titruc.shaderPatcher.playerManager.PlayerManager;
 import me.titruc.shaderPatcher.commands.Error;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
+import org.bukkit.Bukkit;
 
 //a little command so player can change their shader related visual setting
 public class ChangeShaderOptionArgumentBuilder
@@ -38,6 +43,10 @@ public class ChangeShaderOptionArgumentBuilder
                                 throw Error.ALREADY_SET.create();
                             }
                             PlayerManager.setPlayerShaderOption(player, optionId);
+                            player.sendMessage(Component.text("Changed visual settings !").color(NamedTextColor.GREEN));
+
+                            ChangeVisualSettings event = new ChangeVisualSettings(player);
+                            Bukkit.getPluginManager().callEvent(event);
                         }
                         return 1;
                     }));

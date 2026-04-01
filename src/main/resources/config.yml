@@ -2,7 +2,6 @@
   #shader available option
 SHADER_OPTION:
   - disable
-  - hybrid
   - enable
   #default shader index
 SHADER_OPTION_DEFAULT_ID : 2
@@ -28,7 +27,7 @@ PLAYER_VERSION_PERSISTENT_DATA_NAME : "optionVersion"
 
 #warning text
   #actual text
-WARNING_TEXT : "/!\\ Unsupported shader /!\\\n  do /%s to change visual settings /n check #info for more info"
+WARNING_TEXT : "/!\\ Unsupported shader /!\\\n  do /%s to change visual settings \n check #info for more info"
   #color (need to be the same one in the shadervanilla to make the text disapper if the shader is compatible
 WARNING_INVISIBLE_COLOR : "#CD0C33"
   #display time in seconds
